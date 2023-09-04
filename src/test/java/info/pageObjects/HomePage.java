@@ -6,7 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import info.reusables.customEnsure;
 import net.serenitybdd.core.annotations.findby.FindBy;
@@ -14,7 +15,9 @@ import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 
 
+
 public class HomePage extends PageObject {
+	protected static final Logger LOG = LoggerFactory.getLogger(HomePage.class);
 
 
 	@FindBy(xpath = "(//span[text()='Branch Finder'])[1]")
@@ -58,6 +61,7 @@ public class HomePage extends PageObject {
 		js.executeScript("arguments[0].scrollIntoView();",element);
 		String phoneNumber = txtPhoneNumber.getText();
 		customEnsure.customLogWithoutScreenShot("Phone Number for postcode is ====" + phoneNumber,"pass");
+		LOG.info("Phone Number for postcode is ====" + phoneNumber);
 
 	}
 	
